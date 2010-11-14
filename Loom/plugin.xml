@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="LoomBuilder"
+         name="Loom Bulder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="true">
+         <run
+               class="net.codingwell.loom.builder.LoomBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="LoomNature"
+         name="Loom Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="net.codingwell.loom.builder.LoomNature">
+         </run>
+      </runtime>
+      <builder
+            id="Loom.LoomBuilder">
+      </builder>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            objectClass="org.eclipse.core.resources.IProject"
+            nameFilter="*"
+            id="Loom.contribution1">
+         <action
+               label="Add/Remove Sample Nature"
+               class="net.codingwell.loom.builder.ToggleNatureAction"
+               menubarPath="additions"
+               enablesFor="+"
+               id="Loom.addRemoveNatureAction">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         id="xmlProblem"
+         name="XML Problem"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+
+</plugin>
